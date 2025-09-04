@@ -18,4 +18,3 @@ shape = SubResource("RectangleShape2D_1a2b3")
 texture = SubResource("PlaceholderTexture2D_1c2d3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = true
