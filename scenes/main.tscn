@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpcjxr26k8tgw"]
+
+[ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
+[ext_resource type="Script" path="res://scripts/game_world.gd" id="2_3k9wy"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("2_3k9wy")
+
+[node name="Player" parent="." instance=ExtResource("1_2j8vx")]
+position = Vector2(400, 300)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Instructions" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -40.0
+offset_right = 400.0
+offset_bottom = -10.0
+text = "Use arrow keys to move. Ready for Lesson 1!"
