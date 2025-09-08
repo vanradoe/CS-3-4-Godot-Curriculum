@@ -70,6 +70,26 @@ Encourage students to **almost always return something** from their functions:
 
 ## Topic Progression
 
+### Topic 0: Debugging Fundamentals (Integrated Throughout All Topics)
+Debugging skills are embedded in every lesson, not taught separately:
+- **Return Value Testing**: Every function's return value should be checked and validated
+- **Console Debugging**: Strategic use of print statements to trace execution flow
+- **Incremental Testing**: Test each small piece before combining into larger systems
+- **Error Prediction**: Students predict what will break before running code
+- **Systematic Debugging**: When things break, use methodical steps to isolate issues
+
+**Debugging Integration Examples:**
+- **Classes**: Test each property and method individually, verify return values
+- **Inheritance**: Debug parent vs child method calls, check inheritance chain
+- **Patterns**: Test pattern implementation step-by-step, validate state changes
+- **Data Structures**: Print contents at each step, verify expected vs actual values
+
+**Testing Culture:**
+- Write small test functions that call your methods and check return values
+- Use assert statements to validate assumptions
+- Create debug modes that show internal state
+- Always ask "How do I know this worked?" for every function
+
 ### Topic 1: Classes (Lessons 1.1-1.6)
 Start with HealthPotion class to create pickup system:
 - 1.1: Understanding existing HealthPotion class, create Coin class
@@ -233,8 +253,13 @@ func example_function():
 ## Lesson Creation Process
 1. **Create only ONE lesson per response**
 2. **Include any necessary code stubs/files for that lesson**
-3. **End with suggested prompt for next lesson creation**
-4. **Wait for human review before proceeding**
+3. **Embed debugging practices throughout each lesson**:
+   - Include "test your function" steps that check return values
+   - Add prediction questions about what might go wrong
+   - Provide debugging strategies when things don't work
+   - Show students how to write simple test functions
+4. **End with suggested prompt for next lesson creation**
+5. **Wait for human review before proceeding**
 
 ## Example Next Prompt Template
 "Please create Lesson [X.Y] titled '[Title]' that teaches [specific concept]. Students should [specific learning goal]. The lesson should build on [previous lesson elements] and prepare for [future concept]. Focus on implementing [specific game feature]."
