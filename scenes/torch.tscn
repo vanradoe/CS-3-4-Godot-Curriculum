@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6cn64y21oke7"]
+
+[ext_resource type="Texture2D" uid="uid://bwd62n2s4k1j5" path="res://assets/point_light.webp" id="1_d4v33"]
+
+[node name="Torch" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.5058824, 0, 1)
+shadow_enabled = true
+texture = ExtResource("1_d4v33")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

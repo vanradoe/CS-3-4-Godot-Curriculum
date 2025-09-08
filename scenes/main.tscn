@@ -1,12 +1,23 @@
-[gd_scene load_steps=5 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=6 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
-[ext_resource type="Script" path="res://scripts/game_world.gd" id="2_3k9wy"]
+[ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
 [ext_resource type="TileSet" uid="uid://wio17aw1fnr2" path="res://tilesets/dungeon.tres" id="3_fpihc"]
 [ext_resource type="PackedScene" uid="uid://clkh0aurm6cru" path="res://scenes/spike.tscn" id="4_j0bf8"]
 
+[sub_resource type="Environment" id="Environment_jyhfs"]
+background_energy_multiplier = 0.1
+ambient_light_source = 1
+reflected_light_source = 1
+
 [node name="Main" type="Node2D"]
 script = ExtResource("2_3k9wy")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jyhfs")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.19973177, 0.19973174, 0.19973174, 1)
 
 [node name="Tilemap" type="Node2D" parent="."]
 scale = Vector2(2, 2)
