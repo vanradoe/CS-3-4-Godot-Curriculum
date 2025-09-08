@@ -14,6 +14,11 @@ var facing: Vector2 = Vector2.ZERO
 # TODO: Add character identity properties here (Lesson 1)  
 # TODO: Add combat stats here (Lesson 1)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit(0)
+
+
 func _ready():
 	print("Player is ready!")
 	# TODO: Add detailed character info display (Lesson 1)
