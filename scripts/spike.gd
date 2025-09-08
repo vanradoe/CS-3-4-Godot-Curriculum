@@ -22,7 +22,7 @@ func _on_body_entered(body):
 		if body.has_method("take_damage"):
 			body.take_damage(damage_amount)
 		else:
-			print("Player doesn't have take_damage() method yet - coming in Lesson 2!")
+			print("Player doesn't have take_damage() method yet - coming in future lesson!")
 		
 		# Play the animation of the spikes resetting
 		$AnimatedSprite2D.stop()
