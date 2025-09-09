@@ -40,19 +40,19 @@ class_name HealthPotion
 # What should the default value be?
 
 func configure_potion_type() -> bool:
-    # TODO: Follow the coin pattern exactly
-    # minor = 20 HP, major = 50 HP, super = 100 HP
-    # TODO: Use match statement
-    # TODO: Set heal_amount based on potion_type
-    # TODO: Print debug messages
-    # TODO: Return true for valid types, false for invalid
-    pass
+	# TODO: Follow the coin pattern exactly
+	# minor = 20 HP, major = 50 HP, super = 100 HP
+	# TODO: Use match statement
+	# TODO: Set heal_amount based on potion_type
+	# TODO: Print debug messages
+	# TODO: Return true for valid types, false for invalid
+	pass
 
 func _ready():
-    # TODO: Call configure_potion_type() and test return value
-    # TODO: Print appropriate success/failure messages
-    # TODO: Keep existing signal connection
-    body_entered.connect(_on_body_entered)
+	# TODO: Call configure_potion_type() and test return value
+	# TODO: Print appropriate success/failure messages
+	# TODO: Keep existing signal connection
+	body_entered.connect(_on_body_entered)
 ```
 
 **Reference**: Look at how your coin class does this - the pattern is identical!
@@ -80,10 +80,10 @@ If you created validation for coins, apply the same concept to potions:
 
 ```gdscript
 func validate_potion() -> bool:
-    # TODO: Check if potion_type is valid
-    # TODO: Check if heal_amount makes sense for the type
-    # TODO: Return validation result
-    pass
+	# TODO: Check if potion_type is valid
+	# TODO: Check if heal_amount makes sense for the type
+	# TODO: Return validation result
+	pass
 ```
 
 ### Step 6: Debug and Test Systematically

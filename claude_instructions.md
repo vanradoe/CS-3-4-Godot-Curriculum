@@ -202,8 +202,8 @@ Brief description of the game feature being added.
 
 ```gdscript
 func example_function():
-    # TODO: [Detailed guidance based on scaffolding level]
-    pass
+	# TODO: [Detailed guidance based on scaffolding level]
+	pass
 ```
 ```
 

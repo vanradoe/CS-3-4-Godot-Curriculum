@@ -43,24 +43,24 @@ class_name Weapon
 @export var damage: int = 10
 
 func configure_weapon() -> bool:
-    match weapon_type:
-        "sword":
-            damage = 25
-            return true
-        "bow":
-            damage = 15
-            return true
-        "club":
-            damage = 35
-            return true
-        _:
-            print("Unknown weapon type!")
-            return false
+	match weapon_type:
+		"sword":
+			damage = 25
+			return true
+		"bow":
+			damage = 15
+			return true
+		"club":
+			damage = 35
+			return true
+		_:
+			print("Unknown weapon type!")
+			return false
 
 func _ready():
-    var success = configure_weapon()
-    if success:
-        print("Weapon configured: " + weapon_type + " deals " + str(damage) + " damage")
+	var success = configure_weapon()
+	if success:
+		print("Weapon configured: " + weapon_type + " deals " + str(damage) + " damage")
 ```
 
 **Key Pattern Elements:**
@@ -83,12 +83,12 @@ Following the weapon example above, create this method in your Coin class:
 
 ```gdscript
 func configure_coin_type() -> bool:
-    # TODO: Use match statement like the weapon example
-    # TODO: Set gold_value based on coin_type
-    # copper = 5, silver = 25, gold = 100
-    # TODO: Print debug message for each type
-    # TODO: Return true for valid types, false for invalid types
-    pass
+	# TODO: Use match statement like the weapon example
+	# TODO: Set gold_value based on coin_type
+	# copper = 5, silver = 25, gold = 100
+	# TODO: Print debug message for each type
+	# TODO: Return true for valid types, false for invalid types
+	pass
 ```
 
 **Debug Challenge**: How will you test that this method works correctly?
@@ -98,9 +98,9 @@ Modify your `_ready()` method to use the new configuration:
 
 ```gdscript
 func _ready():
-    # TODO: Call configure_coin_type() and store the result
-    # TODO: Print success/failure message based on the return value
-    # TODO: Keep your existing signal connection code
+	# TODO: Call configure_coin_type() and store the result
+	# TODO: Print success/failure message based on the return value
+	# TODO: Keep your existing signal connection code
 ```
 
 ## Part 4: Testing Coin Variations
@@ -124,8 +124,8 @@ Add this test method to verify your coins work correctly:
 func test_coin_setup() -> bool:
     # TODO: Check if gold_value matches what you expect for coin_type
     # TODO: Print the actual vs expected values
-    # TODO: Return true if they match, false if they don't
-    pass
+	# TODO: Return true if they match, false if they don't
+	pass
 ```
 
 Call this in your `_ready()` method after configuration to verify everything worked.
@@ -144,11 +144,11 @@ Based on your testing, consider adding validation:
 
 ```gdscript
 func validate_coin() -> bool:
-    # TODO: Check if coin_type is not empty
-    # TODO: Check if gold_value is positive  
-    # TODO: Print helpful error messages
-    # TODO: Return true if valid, false if problems found
-    pass
+	# TODO: Check if coin_type is not empty
+	# TODO: Check if gold_value is positive  
+	# TODO: Print helpful error messages
+	# TODO: Return true if valid, false if problems found
+	pass
 ```
 
 ## Part 6: Systematic Testing

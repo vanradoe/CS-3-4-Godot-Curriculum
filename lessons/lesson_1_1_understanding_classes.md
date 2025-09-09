@@ -74,11 +74,11 @@ class_name HealthPotion
 
 # This is a METHOD - an action the potion can perform
 func _on_body_entered(body):
-    # Code that runs when something touches this potion
-    if body is Player:
-        # Try to heal the player
-        if body.has_method("heal"):
-            body.heal(heal_amount)  # Call the player's heal method
+	# Code that runs when something touches this potion
+	if body is Player:
+		# Try to heal the player
+		if body.has_method("heal"):
+			body.heal(heal_amount)  # Call the player's heal method
 ```
 
 ### Key Concepts
@@ -136,9 +136,9 @@ Complete the `_ready()` method to match the HealthPotion pattern:
 
 ```gdscript
 func _ready():
-    # TODO: Print a message showing the coin's gold value
-    # TODO: Connect the collision signal to _on_body_entered
-    # Hint: Copy the pattern from HealthPotion but change method name
+	# TODO: Print a message showing the coin's gold value
+	# TODO: Connect the collision signal to _on_body_entered
+	# Hint: Copy the pattern from HealthPotion but change method name
 ```
 
 **Remember**: Functions should return something when possible. What should `_ready()` return? In this case, `_ready()` is a special Godot method that doesn't need a return value.
@@ -154,7 +154,7 @@ func _on_body_entered(body):
     # TODO: If method exists, call it with gold_value
     # TODO: Print success message
     # TODO: Remove coin if auto_pickup is true
-    # TODO: If method doesn't exist, print helpful message
+	# TODO: If method doesn't exist, print helpful message
 ```
 
 **Key Question**: What method should the coin try to call on the player? If HealthPotion calls `player.heal()`, what should Coin call?

@@ -141,12 +141,12 @@ Add this method to create random pickups:
 
 ```gdscript
 func spawn_random_pickup() -> Node:
-    """Create a random pickup item. Returns the created pickup."""
-    # TODO: Choose random pickup type (coin or potion)
-    # TODO: If coin, choose random coin_type
-    # TODO: If potion, choose random potion_type
-    # TODO: Instantiate the appropriate scene
-    # TODO: Configure the pickup's properties
+	"""Create a random pickup item. Returns the created pickup."""
+	# TODO: Choose random pickup type (coin or potion)
+	# TODO: If coin, choose random coin_type
+	# TODO: If potion, choose random potion_type
+	# TODO: Instantiate the appropriate scene
+	# TODO: Configure the pickup's properties
     # TODO: Position it randomly near the chest
     # TODO: Add to scene tree
     # TODO: Return the created pickup for tracking

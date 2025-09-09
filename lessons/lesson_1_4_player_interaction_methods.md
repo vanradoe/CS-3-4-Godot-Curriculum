@@ -58,46 +58,46 @@ class_name Combat
 @export var armor: int = 5
 
 func take_damage(amount: int) -> int:
-    """Apply damage and return actual damage dealt."""
-    # Validate input
-    if amount <= 0:
-        print("Invalid damage amount: " + str(amount))
-        return 0
-    
-    # Calculate actual damage (armor reduces it)
-    var actual_damage = max(amount - armor, 1)  # Always at least 1 damage
-    
-    # Apply damage with bounds checking
-    health -= actual_damage
-    if health < 0:
-        health = 0
-    
-    # Provide feedback
-    print("Took " + str(actual_damage) + " damage. Health: " + str(health))
-    
-    # Return actual damage for caller to use
-    return actual_damage
+	"""Apply damage and return actual damage dealt."""
+	# Validate input
+	if amount <= 0:
+		print("Invalid damage amount: " + str(amount))
+		return 0
+	
+	# Calculate actual damage (armor reduces it)
+	var actual_damage = max(amount - armor, 1)  # Always at least 1 damage
+	
+	# Apply damage with bounds checking
+	health -= actual_damage
+	if health < 0:
+		health = 0
+	
+	# Provide feedback
+	print("Took " + str(actual_damage) + " damage. Health: " + str(health))
+	
+	# Return actual damage for caller to use
+	return actual_damage
 
 func heal_damage(amount: int) -> int:
-    """Heal damage and return actual healing done."""
-    # Validate input
-    if amount <= 0:
-        print("Invalid heal amount: " + str(amount))
-        return 0
-    
-    # Store original health for comparison
-    var original_health = health
-    
-    # Apply healing with max health limit
-    health += amount
-    if health > max_health:
-        health = max_health
-    
-    # Calculate actual healing done
-    var actual_healing = health - original_health
-    
-    print("Healed " + str(actual_healing) + " HP. Health: " + str(health))
-    return actual_healing
+	"""Heal damage and return actual healing done."""
+	# Validate input
+	if amount <= 0:
+		print("Invalid heal amount: " + str(amount))
+		return 0
+	
+	# Store original health for comparison
+	var original_health = health
+	
+	# Apply healing with max health limit
+	health += amount
+	if health > max_health:
+		health = max_health
+	
+	# Calculate actual healing done
+	var actual_healing = health - original_health
+	
+	print("Healed " + str(actual_healing) + " HP. Health: " + str(health))
+	return actual_healing
 ```
 
 **Key Communication Principles:**
@@ -124,10 +124,10 @@ Following the communication pattern above, implement the player's heal method:
 
 ```gdscript
 func heal(amount: int) -> int:
-    """Heal the player and return actual healing done."""
-    # TODO: Validate that amount is positive
-    # TODO: Store original health for comparison
-    # TODO: Add healing but don't exceed max_health
+	"""Heal the player and return actual healing done."""
+	# TODO: Validate that amount is positive
+	# TODO: Store original health for comparison
+	# TODO: Add healing but don't exceed max_health
     # TODO: Calculate actual healing done
     # TODO: Print debug information
     # TODO: Return actual healing for caller to verify
@@ -241,18 +241,18 @@ Add debug commands to systematically test your methods. In `scripts/game_world.g
 ```gdscript
 # Add to _unhandled_input method:
 if Input.is_action_just_pressed("ui_page_down"):  # Page Down
-    player.test_player_methods()
+	player.test_player_methods()
 
 if event.is_action_pressed("ui_home"):  # Home key  
-    # Test edge cases
-    print("=== EDGE CASE TESTING ===")
-    print("Testing invalid healing:")
-    var bad_heal = player.heal(-10)
-    print("Negative heal returned: " + str(bad_heal))
-    
-    print("Testing invalid gold:")
-    var bad_gold = player.add_gold(-5)
-    print("Negative gold returned: " + str(bad_gold))
+	# Test edge cases
+	print("=== EDGE CASE TESTING ===")
+	print("Testing invalid healing:")
+	var bad_heal = player.heal(-10)
+	print("Negative heal returned: " + str(bad_heal))
+	
+	print("Testing invalid gold:")
+	var bad_gold = player.add_gold(-5)
+	print("Negative gold returned: " + str(bad_gold))
 ```
 
 ## Part 6: System Validation
