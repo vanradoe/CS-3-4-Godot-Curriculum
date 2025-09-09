@@ -17,3 +17,6 @@ mono_crash.*.json
 
 # Other
 .DS_store
+/lessons
+.DS_Store
+.DS_Store

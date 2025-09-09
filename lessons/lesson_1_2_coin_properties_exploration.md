@@ -20,7 +20,7 @@ Let's investigate how properties currently work:
 3. **Select the Coin node** in the scene tree
 4. **Look at the Inspector panel** - what properties do you see?
 5. **Change the `gold_value` from 10 to 50**
-6. **Run the game again** - what's different in the console output?
+6. **Run the game again** - if you could pick up the coin, what would changing this value do in the game?
 
 ### Step 2: Predict Multi-Coin Behavior
 Before making changes, answer these questions:

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>lesson_2_1_implementing_pickup_base_class.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///Users/aansell/Desktop/CS-3-4-Godot-Curriculum/R%3A%5C2.Travail%5C1.Enseignement%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css"><link rel="stylesheet" href="file:///Users/aansell/Desktop/CS-3-4-Godot-Curriculum/D%3A%5Crdaros%5CCours%5C_1.Outils%5C2.Developpement%5C1.SCSS%5Cmain.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="lesson-21-implementing-pickup-base-class">Lesson 2.1: Implementing Pickup Base Class</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, you will:</p>
+<ul>
+<li>Create your first base class with shared functionality</li>
+<li>Understand how to design methods that will be overridden by subclasses</li>
+<li>Implement common pickup behaviors that all pickups will share</li>
+<li>Experience the foundation of inheritance before refactoring existing code</li>
+</ul>
+<h2 id="what-were-building">What We're Building</h2>
+<p>Today we're <strong>creating the Pickup base class</strong> that you designed in Lesson 1.6. This will contain all the shared functionality between coins, potions, and future pickups. You'll build this class step-by-step, using your existing coin code as a reference guide.</p>
+<h2 id="part-1-code-investigation">Part 1: Code Investigation</h2>
+<h3 id="step-1-review-your-design">Step 1: Review Your Design</h3>
+<p>Look back at your Pickup base class design from Lesson 1.6:</p>
+<ol>
+<li><strong>Open</strong> the stub <code>scripts/pickup.gd</code> file you created (if it doesn't exist, create it)</li>
+<li><strong>Review</strong> your notes about what properties and methods should be shared</li>
+<li><strong>Look at</strong> your existing <code>scripts/health_potion.gd</code> as a reference for common patterns</li>
+</ol>
+<h3 id="step-2-analyze-coin-implementation">Step 2: Analyze Coin Implementation</h3>
+<p>Let's examine a coin implementation as our reference. Here's what a typical coin class looks like:</p>
+<pre class="hljs"><code><div>extends Area2D
+class_name Coin
+
+@export var gold_value: int = 10
+@export var auto_pickup: bool = true
+@export var coin_type: String = &quot;copper&quot;
+
+func _ready():
+    print(&quot;🪙 Coin created - Type: &quot; + coin_type + &quot;, Value: &quot; + str(gold_value))
+    body_entered.connect(_on_body_entered)
+    
+func _on_body_entered(body):
+    if body is Player:
+        print(&quot;🎯 Player touched coin!&quot;)
+        
+        if not body.has_method(&quot;add_gold&quot;):
+            print(&quot;⚠️ Player missing add_gold method!&quot;)
+            return
+            
+        var pickup_successful: bool = body.add_gold(gold_value)
+        if pickup_successful:
+            print(&quot;✅ Player gained &quot; + str(gold_value) + &quot; gold&quot;)
+            queue_free()
+        else:
+            print(&quot;❌ Pickup failed&quot;)
+            
+func configure_coin_type() -&gt; bool:
+    match coin_type.to_lower():
+        &quot;copper&quot;:
+            gold_value = 10
+            return true
+        &quot;silver&quot;: 
+            gold_value = 25
+            return true
+        &quot;gold&quot;:
+            gold_value = 50
+            return true
+        _:
+            print(&quot;⚠️ Unknown coin type: &quot; + coin_type)
+            gold_value = 1
+            return false
+</div></code></pre>
+<h3 id="step-3-identify-common-patterns">Step 3: Identify Common Patterns</h3>
+<p>Compare this coin code with your <code>health_potion.gd</code>:</p>
+<p><strong>Common Pattern Questions:</strong></p>
+<ul>
+<li>What parts of the <code>_ready()</code> method are identical?</li>
+<li>What parts of <code>_on_body_entered()</code> follow the same structure?</li>
+<li>What kind of validation happens in both classes?</li>
+<li>What properties appear in both classes?</li>
+</ul>
+<h2 id="part-2-understanding-base-class-design">Part 2: Understanding Base Class Design</h2>
+<h3 id="documentation-base-class-principles">Documentation: Base Class Principles</h3>
+<p>A base class should contain:</p>
+<pre class="hljs"><code><div># Example of a well-designed base class
+extends Area2D
+class_name Item
+
+# Properties that ALL items have
+@export var item_name: String = &quot;Generic Item&quot;
+@export var auto_pickup: bool = true
+@export var pickup_sound: String = &quot;pickup&quot;
+
+# Methods that ALL items need
+func _ready():
+    # Common setup for all items
+    body_entered.connect(_on_body_entered)
+    print(&quot;📦 Item created: &quot; + item_name)
+
+func _on_body_entered(body):
+    # Common collision logic
+    if body is Player:
+        apply_item_effect(body)
+
+# Method that subclasses MUST implement  
+func apply_item_effect(player: Player) -&gt; bool:
+    # This is &quot;abstract&quot; - subclasses override it
+    print(&quot;⚠️ Base item effect - override this!&quot;)
+    return false
+    
+# Method that subclasses CAN customize
+func get_item_info() -&gt; String:
+    return &quot;Item: &quot; + item_name
+</div></code></pre>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li><strong>Shared Properties</strong>: Things every subclass needs</li>
+<li><strong>Shared Methods</strong>: Behavior that's identical across all subclasses</li>
+<li><strong>Abstract Methods</strong>: Methods that subclasses must implement differently</li>
+<li><strong>Virtual Methods</strong>: Methods subclasses can override if needed</li>
+</ul>
+<h2 id="part-3-building-the-pickup-base-class">Part 3: Building the Pickup Base Class</h2>
+<h3 id="step-4-create-the-base-class-structure">Step 4: Create the Base Class Structure</h3>
+<p>Create or update <code>scripts/pickup.gd</code> with the basic structure:</p>
+<pre class="hljs"><code><div>extends Area2D
+class_name Pickup
+
+# TODO: Add properties that ALL pickups need
+# Look at coin example: what properties do coin and potion both have?
+# Think about: auto_pickup, some kind of type/name, debug info
+
+# TODO: Add any other shared properties you identified in Lesson 1.6
+
+func _ready():
+    # TODO: Add setup that EVERY pickup needs
+    # Look at coin example: what happens in _ready() for all pickups?
+    # Think about: connecting signals, printing debug info
+    pass
+
+func _on_body_entered(body):
+    # TODO: Add collision logic that ALL pickups share
+    # Look at coin example: what validation happens for all pickups?
+    # Think about: checking if body is Player, calling pickup effect
+    pass
+
+func apply_pickup_effect(player: Player) -&gt; bool:
+    # TODO: This method will be overridden by subclasses
+    # Each pickup type (coin, potion, etc.) implements its own effect
+    # For now, just print a warning that this should be overridden
+    return false
+
+func get_pickup_info() -&gt; String:
+    # TODO: Return debug information about this pickup
+    # Subclasses can override this to add specific info
+    # For now, return basic info that works for any pickup
+    return &quot;Generic pickup&quot;
+</div></code></pre>
+<h3 id="step-5-implement-shared-properties">Step 5: Implement Shared Properties</h3>
+<p>Based on your analysis of coin and potion classes, add shared properties:</p>
+<pre class="hljs"><code><div># TODO: Look at both coin and potion classes
+# What properties appear in both? Add them here.
+
+# Hint: Both classes have:
+# - Some kind of auto_pickup boolean
+# - Some kind of type string (coin_type, potion_type)
+# - Both extend Area2D
+
+# TODO: Add @export var declarations for shared properties
+# Use names that make sense for ANY pickup, not just coins or potions
+</div></code></pre>
+<h3 id="step-6-implement-the-ready-method">Step 6: Implement the _ready() Method</h3>
+<p>Fill in the <code>_ready()</code> method with shared initialization:</p>
+<pre class="hljs"><code><div>func _ready():
+    # TODO: Connect the collision signal
+    # Look at coin example: what signal gets connected?
+    
+    # TODO: Print debug information
+    # Create debug output that works for any pickup type
+    # Use get_pickup_info() to get the specific info
+    
+    # TODO: Call any setup methods that all pickups need
+    # Look at your design from Lesson 1.6
+    pass
+</div></code></pre>
+<h3 id="step-7-implement-collision-detection">Step 7: Implement Collision Detection</h3>
+<p>Fill in the <code>_on_body_entered()</code> method:</p>
+<pre class="hljs"><code><div>func _on_body_entered(body):
+    # TODO: Check if the collision is with a Player
+    # Look at coin example: how is this validated?
+    
+    # TODO: Call the pickup effect method
+    # This should call apply_pickup_effect() and handle the result
+    
+    # TODO: Handle successful pickup
+    # What should happen if apply_pickup_effect() returns true?
+    
+    # TODO: Handle failed pickup  
+    # What should happen if apply_pickup_effect() returns false?
+    pass
+</div></code></pre>
+<h3 id="step-8-implement-getpickupinfo-method">Step 8: Implement get_pickup_info() Method</h3>
+<p>Create a method that provides debug information:</p>
+<pre class="hljs"><code><div>func get_pickup_info() -&gt; String:
+    # TODO: Return a string with basic pickup information
+    # This should work for any pickup type
+    # Include information that all pickups have in common
+    # Subclasses can override this to add specific details
+    return &quot;TODO: Add basic pickup info&quot;
+</div></code></pre>
+<h2 id="part-4-testing-the-base-class">Part 4: Testing the Base Class</h2>
+<h3 id="step-9-create-a-test-instance">Step 9: Create a Test Instance</h3>
+<p>To test your base class, create a simple test instance:</p>
+<pre class="hljs"><code><div># TODO: In your game world or test scene, try creating a Pickup instance
+# Add this temporarily to test your base class:
+
+func test_pickup_base_class():
+    var test_pickup = Pickup.new()
+    print(&quot;Testing pickup info: &quot; + test_pickup.get_pickup_info())
+    
+    # TODO: Add more tests for your base class methods
+    # What should you test to make sure your base class works?
+</div></code></pre>
+<h3 id="step-10-predict-behavior">Step 10: Predict Behavior</h3>
+<p>Before running your code, predict what will happen:</p>
+<p><strong>Prediction Questions:</strong></p>
+<ul>
+<li>What will happen when you create a Pickup instance?</li>
+<li>What will the <code>get_pickup_info()</code> method return?</li>
+<li>What will happen if a Player touches a base Pickup?</li>
+<li>What error messages might you see?</li>
+</ul>
+<h3 id="step-11-test-and-debug">Step 11: Test and Debug</h3>
+<p>Run your game and test the base class:</p>
+<ol>
+<li><strong>Create a pickup instance</strong> and see what debug output appears</li>
+<li><strong>Test the collision detection</strong> - what happens when the player touches it?</li>
+<li><strong>Check the console output</strong> - do you see the expected messages?</li>
+<li><strong>Look for errors</strong> - what needs to be fixed?</li>
+</ol>
+<p><strong>Common Issues to Debug:</strong></p>
+<ul>
+<li>Missing signal connections</li>
+<li>Incorrect method signatures</li>
+<li>Properties not properly initialized</li>
+<li>Abstract methods not properly implemented</li>
+</ul>
+<h2 id="part-5-understanding-virtual-methods">Part 5: Understanding Virtual Methods</h2>
+<h3 id="documentation-virtual-vs-abstract-methods">Documentation: Virtual vs Abstract Methods</h3>
+<pre class="hljs"><code><div># Example showing different types of methods in base classes
+
+extends Node
+class_name GameEntity
+
+# Concrete method - all subclasses use exactly this implementation
+func get_position() -&gt; Vector2:
+    return global_position
+
+# Virtual method - subclasses CAN override, but don't have to
+func get_display_name() -&gt; String:
+    return &quot;Generic Entity&quot;
+    
+# Abstract method - subclasses MUST override this
+func update_behavior(delta: float) -&gt; void:
+    print(&quot;⚠️ update_behavior not implemented - override in subclass!&quot;)
+</div></code></pre>
+<p><strong>In Your Pickup Class:</strong></p>
+<ul>
+<li>Which methods should be concrete (same for all pickups)?</li>
+<li>Which methods should be virtual (subclasses can customize)?</li>
+<li>Which methods should be abstract (subclasses must implement)?</li>
+</ul>
+<h3 id="step-12-refine-your-method-design">Step 12: Refine Your Method Design</h3>
+<p>Review your Pickup class methods and categorize them:</p>
+<pre class="hljs"><code><div># TODO: For each method in your Pickup class, decide:
+
+func _ready():
+    # Is this concrete, virtual, or abstract?
+    # Should all pickups do exactly the same setup?
+
+func _on_body_entered(body):
+    # Is this concrete, virtual, or abstract?
+    # Should all pickups handle collision the same way?
+
+func apply_pickup_effect(player: Player) -&gt; bool:
+    # Is this concrete, virtual, or abstract?
+    # Should all pickups have the same effect?
+
+func get_pickup_info() -&gt; String:
+    # Is this concrete, virtual, or abstract?
+    # Should all pickups return the same debug info?
+</div></code></pre>
+<h2 id="part-6-documentation-and-planning">Part 6: Documentation and Planning</h2>
+<h3 id="step-13-document-your-base-class">Step 13: Document Your Base Class</h3>
+<p>Write comments explaining your design decisions:</p>
+<pre class="hljs"><code><div># TODO: Add class documentation at the top of your file
+# Explain what the Pickup class is for and how it should be used
+
+# TODO: Add comments to each method explaining:
+# - What the method does
+# - Whether subclasses should override it
+# - What it returns and why
+
+# TODO: Add comments to properties explaining:
+# - What each property represents
+# - What values are valid
+# - How subclasses should use them
+</div></code></pre>
+<h3 id="step-14-plan-for-inheritance">Step 14: Plan for Inheritance</h3>
+<p>Think ahead to how subclasses will use your base class:</p>
+<p><strong>Coin Class Planning:</strong></p>
+<ul>
+<li>What will <code>extends Pickup</code> instead of <code>extends Area2D</code>?</li>
+<li>What methods will Coin override?</li>
+<li>What properties will Coin add?</li>
+<li>How will <code>apply_pickup_effect()</code> work in Coin?</li>
+</ul>
+<p><strong>HealthPotion Class Planning:</strong></p>
+<ul>
+<li>How will HealthPotion use the same base class?</li>
+<li>What will be different between Coin and HealthPotion implementations?</li>
+<li>What code will be eliminated from both classes?</li>
+</ul>
+<h2 id="reflection-questions">Reflection Questions</h2>
+<p>Write down or discuss your answers:</p>
+<ol>
+<li>
+<p><strong>Base Class Design</strong>: What was most challenging about designing methods that work for all pickup types?</p>
+</li>
+<li>
+<p><strong>Abstract Methods</strong>: Why do you think <code>apply_pickup_effect()</code> should be abstract rather than concrete?</p>
+</li>
+<li>
+<p><strong>Code Reuse</strong>: What specific code will be eliminated from future subclasses by having this base class?</p>
+</li>
+<li>
+<p><strong>Method Categories</strong>: How did you decide which methods should be concrete vs. virtual vs. abstract?</p>
+</li>
+<li>
+<p><strong>Testing Approach</strong>: What surprised you when testing the base class? What worked differently than expected?</p>
+</li>
+<li>
+<p><strong>Future Expansion</strong>: How will this base class make it easier to add new pickup types like scrolls or keys?</p>
+</li>
+</ol>
+<h2 id="deliverables">Deliverables</h2>
+<p>By the end of this lesson, you should have:</p>
+<ul>
+<li><input type="checkbox" id="checkbox0"><label for="checkbox0">Complete Pickup base class with all shared properties</label></li>
+<li><input type="checkbox" id="checkbox1"><label for="checkbox1">Implemented </label><code>_ready()</code> method with common initialization</li>
+<li><input type="checkbox" id="checkbox2"><label for="checkbox2">Implemented </label><code>_on_body_entered()</code> with shared collision logic</li>
+<li><input type="checkbox" id="checkbox3"><label for="checkbox3">Abstract </label><code>apply_pickup_effect()</code> method for subclasses to override</li>
+<li><input type="checkbox" id="checkbox4"><label for="checkbox4">Virtual </label><code>get_pickup_info()</code> method with base implementation</li>
+<li><input type="checkbox" id="checkbox5"><label for="checkbox5">Tested the base class and fixed any immediate errors</label></li>
+<li><input type="checkbox" id="checkbox6"><label for="checkbox6">Documentation explaining design decisions</label></li>
+<li><input type="checkbox" id="checkbox7"><label for="checkbox7">Understanding of concrete vs. virtual vs. abstract methods</label></li>
+<li><input type="checkbox" id="checkbox8"><label for="checkbox8">Plan for how subclasses will use inheritance</label></li>
+</ul>
+<h2 id="next-lesson-preview">Next Lesson Preview</h2>
+<p>In Lesson 2.2, we'll <strong>refactor your existing Coin class</strong> to inherit from your new Pickup base class! You'll see inheritance eliminate code duplication and experience how subclasses customize base class behavior.</p>
+<p><strong>Exciting Transformation</strong>: You'll convert working code to use inheritance and watch duplicated code disappear while functionality improves!</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><strong>&quot;My base class has errors when I test it&quot;</strong></p>
+<ul>
+<li>Check that all method signatures are correct</li>
+<li>Ensure signal connections use the right signal names</li>
+<li>Verify that properties are properly exported</li>
+<li>Make sure abstract methods have placeholder implementations</li>
+</ul>
+<p><strong>&quot;I'm not sure what should be shared vs. specific&quot;</strong></p>
+<ul>
+<li>Start with what's obviously identical between coin and potion</li>
+<li>Focus on the structure and flow rather than specific values</li>
+<li>When in doubt, make it concrete first, then refactor to virtual later</li>
+<li>Ask: &quot;Would every pickup type need this?&quot;</li>
+</ul>
+<p><strong>&quot;The apply_pickup_effect method seems weird&quot;</strong></p>
+<ul>
+<li>This is intentionally abstract - it's meant to be overridden</li>
+<li>Each pickup type will have completely different effects</li>
+<li>The base class just defines the interface (method signature)</li>
+<li>Don't worry about implementing the actual effect yet</li>
+</ul>
+<p><strong>&quot;Testing the base class is confusing&quot;</strong></p>
+<ul>
+<li>You're testing the structure, not the complete functionality</li>
+<li>Focus on whether methods exist and can be called</li>
+<li>Check that signals connect without errors</li>
+<li>Verify that debug output appears as expected</li>
+</ul>
+
+</body>
+
+</html>
