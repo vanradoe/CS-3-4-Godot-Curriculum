@@ -1,0 +1,10 @@
+extends AnimatableBody2D
+
+
+func set_is_open(is_open: bool) -> void:
+	if is_open:
+		$AnimatedSprite2D.frame = 0
+		collision_layer = 1
+	else:
+		$AnimatedSprite2D.frame = 1
+		collision_layer = 0
