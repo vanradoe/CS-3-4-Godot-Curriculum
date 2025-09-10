@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=11 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://hlj4dyfo1u8l" path="res://scenes/coin.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bqems63ld323y" path="res://scenes/health_potion.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c6cn64y21oke7" path="res://scenes/torch.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://c8mf4562xlcu8" path="res://scenes/door.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" path="res://scenes/lever.tscn" id="8_85g3d"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -20,7 +22,7 @@ script = ExtResource("2_3k9wy")
 environment = SubResource("Environment_jyhfs")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.19973177, 0.19973174, 0.19973174, 1)
+color = Color(0.103743605, 0.103743516, 0.103743516, 1)
 
 [node name="Tilemap" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -41,6 +43,9 @@ tile_set = ExtResource("3_fpihc")
 tile_map_data = PackedByteArray("AADv//3/AAAEAAYAAAAHAAYAAAAEAAYAAAAHAP3/AAAEAAYAAAAMAAIAAAAIAAYAAAAMAP7/AAAIAAYAAAAOAAUAAAAIAAYAAAD2/wYAAAAFAAYAAAAGAP7/AAAEAAcAAAD5//7/AAAEAAcAAAAFAPX/AAAHAAcAAAAFAPb/AAAIAAYAAAAEAPb/AAAIAAYAAAD+//X/AAAEAAYAAAA=")
 tile_set = ExtResource("3_fpihc")
 
+[node name="Torch3" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
+position = Vector2(-270, 98)
+
 [node name="Spike" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
 position = Vector2(88, 8)
 
@@ -50,14 +55,17 @@ position = Vector2(195, -56.5)
 [node name="Torch2" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
 position = Vector2(-204.5, -56.5)
 
-[node name="Torch3" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
-position = Vector2(54, -182)
-
 [node name="HealthPotion" parent="Tilemap/StuffOnTop" instance=ExtResource("6_tefeu")]
 position = Vector2(18, 17.5)
 
 [node name="Coin" parent="Tilemap/StuffOnTop" instance=ExtResource("5_tbgi4")]
 position = Vector2(-9.5, 26)
+
+[node name="Door" parent="Tilemap/StuffOnTop" instance=ExtResource("7_tipki")]
+position = Vector2(24, -24)
+
+[node name="Lever" parent="Tilemap/StuffOnTop" instance=ExtResource("8_85g3d")]
+position = Vector2(-183.5, 105)
 
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 
