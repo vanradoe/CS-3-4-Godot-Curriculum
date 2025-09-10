@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://beba783l4j8gp"]
+
+[ext_resource type="Texture2D" uid="uid://c6mq4sqfm73v5" path="res://assets/free-2d-top-down-pixel-dungeon-asset-pack/doors_lever_chest_animation.png" id="1_oii8l"]
+[ext_resource type="Script" uid="uid://c1dsqg6uhbpgl" path="res://scripts/chest.gd" id="1_sy5e1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy5e1"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqd3d"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yue2o"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhylo"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w02o5"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilhio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy5e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqd3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yue2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhylo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w02o5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg5gm"]
+size = Vector2(18, 18)
+
+[node name="Chest" type="Area2D"]
+script = ExtResource("1_sy5e1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_ilhio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kg5gm")
