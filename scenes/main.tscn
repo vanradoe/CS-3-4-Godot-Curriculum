@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
 [ext_resource type="TileSet" uid="uid://wio17aw1fnr2" path="res://tilesets/dungeon.tres" id="3_fpihc"]
 [ext_resource type="PackedScene" uid="uid://clkh0aurm6cru" path="res://scenes/spike.tscn" id="4_j0bf8"]
-[ext_resource type="PackedScene" uid="uid://dldhgpae3pptp" path="res://scenes/coin.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://hlj4dyfo1u8l" path="res://scenes/coin.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bqems63ld323y" path="res://scenes/health_potion.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c6cn64y21oke7" path="res://scenes/torch.tscn" id="7_o6xl0"]
 
@@ -53,6 +53,12 @@ position = Vector2(-204.5, -56.5)
 [node name="Torch3" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
 position = Vector2(54, -182)
 
+[node name="HealthPotion" parent="Tilemap/StuffOnTop" instance=ExtResource("6_tefeu")]
+position = Vector2(18, 17.5)
+
+[node name="Coin" parent="Tilemap/StuffOnTop" instance=ExtResource("5_tbgi4")]
+position = Vector2(-9.5, 26)
+
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -75,9 +81,3 @@ offset_right = 343.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 10
 text = "Use arrow keys to move. Ready for Lesson 1!"
-
-[node name="HealthPotion" parent="." instance=ExtResource("6_tefeu")]
-position = Vector2(36, 35)
-
-[node name="Coin" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(-19, 52)

@@ -31,7 +31,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfxoj"]
-radius = 12.7060795
+radius = 4.1231055
 
 [sub_resource type="Animation" id="Animation_gan2x"]
 length = 0.001
@@ -114,7 +114,6 @@ color = Color(0.7819218, 0.7083258, 0.2478461, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_jig8b")
-scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_xmuha")
 animation = &"new_animation"
 
