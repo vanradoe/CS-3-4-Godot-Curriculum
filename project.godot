@@ -62,7 +62,11 @@ ui_down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_3="ladder_mask"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.18896914, 0.18896914, 0.18896914, 1)

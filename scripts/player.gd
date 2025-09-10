@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # Movement - Controls how fast the player moves
 @export var move_speed: float = 200.0
@@ -50,15 +50,15 @@ func handle_sprite(direction: Vector2) -> void:
 		facing = direction
 	
 	if facing.y > 0:
-		animated_sprite_2d.play(prefix + "_forward")
+		animated_sprite.play(prefix + "_forward")
 	elif facing.y < 0:
-		animated_sprite_2d.play(prefix + "_backward")
+		animated_sprite.play(prefix + "_backward")
 	elif facing.x < 0:
-		animated_sprite_2d.play(prefix + "_side")
-		animated_sprite_2d.flip_h = true
+		animated_sprite.play(prefix + "_side")
+		animated_sprite.flip_h = true
 	elif facing.x > 0:
-		animated_sprite_2d.play(prefix + "_side")
-		animated_sprite_2d.flip_h = false
+		animated_sprite.play(prefix + "_side")
+		animated_sprite.flip_h = false
 
 # TODO: Add character methods here (Lesson 2)
 # - take_damage()
