@@ -20,3 +20,6 @@ mono_crash.*.json
 /lessons
 .DS_Store
 .DS_Store
+
+# Claude instructions for curriculum development
+claude_instructions.md
