@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=9 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
 [ext_resource type="TileSet" uid="uid://wio17aw1fnr2" path="res://tilesets/dungeon.tres" id="3_fpihc"]
 [ext_resource type="PackedScene" uid="uid://clkh0aurm6cru" path="res://scenes/spike.tscn" id="4_j0bf8"]
-[ext_resource type="PackedScene" path="res://scenes/coin.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://bqems63ld323y" path="res://scenes/health_potion.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://d1v5146j47y5p" path="res://scenes/door.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://hlj4dyfo1u8l" path="res://scenes/coin.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dv14m5ji5w7k0" path="res://scenes/health_potion.tscn" id="6_tefeu"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -38,6 +39,9 @@ tile_set = ExtResource("3_fpihc")
 
 [node name="Spike" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
 position = Vector2(88, 8)
+
+[node name="Door" parent="Tilemap/StuffOnTop" instance=ExtResource("4_o6xl0")]
+position = Vector2(133, 8)
 
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 
