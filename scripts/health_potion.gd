@@ -2,8 +2,17 @@ extends Area2D
 class_name HealthPotion
 
 # Healing properties
-@export var heal_amount: int = 30
+#@export var heal_amount: int = 30
+@export var heal_amount = config_potion_type("green")
 @export var auto_pickup: bool = true
+
+func config_potion_type(potion_type:String)->int:
+	heal_amount = 0
+	if potion_type == "green":
+		heal_amount = 5
+	if potion_type == "red":
+		heal_amount = 10
+	return heal_amount
 
 func _ready():
 	print("Health Potion created - heals " + str(heal_amount) + " HP")

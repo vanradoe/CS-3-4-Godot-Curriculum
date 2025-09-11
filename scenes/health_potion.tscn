@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwb0h"]
-radius = 1.6492422
+radius = 1.64924
 
 [sub_resource type="Animation" id="Animation_gan2x"]
 length = 0.001
@@ -59,9 +59,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2.2973945, 3.03143),
+"transitions": PackedFloat32Array(2.29739, 3.03143),
 "update": 0,
-"values": [0.0, 6.283185307179586]
+"values": [0.0, 6.28319]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

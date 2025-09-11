@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bqems63ld323y" path="res://scenes/health_potion.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://beba783l4j8gp" path="res://scenes/chest.tscn" id="6_tipki"]
 [ext_resource type="PackedScene" uid="uid://c6cn64y21oke7" path="res://scenes/torch.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://d1v5146j47y5p" path="res://scenes/door.tscn" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://c8mf4562xlcu8" path="res://scenes/door.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://5p2ev4o8h7si" path="res://scenes/lever.tscn" id="8_85g3d"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
@@ -23,7 +23,7 @@ script = ExtResource("2_3k9wy")
 environment = SubResource("Environment_jyhfs")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.103743605, 0.103743516, 0.103743516, 1)
+color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="Tilemap" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -61,6 +61,8 @@ position = Vector2(18, 17.5)
 
 [node name="Coin" parent="Tilemap/StuffOnTop" instance=ExtResource("5_tbgi4")]
 position = Vector2(-9.5, 26)
+coin_value = null
+auto_pickup = null
 
 [node name="Door" parent="Tilemap/StuffOnTop" instance=ExtResource("7_tipki")]
 position = Vector2(24, -24)
