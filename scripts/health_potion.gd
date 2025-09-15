@@ -1,5 +1,5 @@
-extends Area2D
-class_name HealthPotion
+extends Area2D 
+class_name Pickup
 
 # Healing properties
 #@export var heal_amount: int = 30

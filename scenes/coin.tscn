@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jig8b"]
 shader = ExtResource("2_wnlwo")
-shader_parameter/color = Color(0.7819218, 0.7083258, 0.2478461, 1)
+shader_parameter/color = Color(0.781922, 0.708326, 0.247846, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xmuha"]
 animations = [{
@@ -31,7 +31,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfxoj"]
-radius = 4.1231055
+radius = 4.12311
 
 [sub_resource type="Animation" id="Animation_gan2x"]
 length = 0.001
@@ -71,9 +71,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2.2973945, 3.03143),
+"transitions": PackedFloat32Array(2.29739, 3.03143),
 "update": 0,
-"values": [0.0, 6.283185307179586]
+"values": [0.0, 6.28319]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -110,7 +110,8 @@ _data = {
 
 [node name="Coin" type="Area2D"]
 script = ExtResource("1_d14el")
-color = Color(0.7819218, 0.7083258, 0.2478461, 1)
+color = Color(0.781922, 0.708326, 0.247846, 1)
+coin_value = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_jig8b")
