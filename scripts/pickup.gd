@@ -19,21 +19,29 @@ func config_Pickup(_amount:int,_label:String,_type:String) -> bool:
 	if _type == "coin":
 		if _label == "copper":
 			_amount = 5
+			print("copper coin found! +5 coins.")
 			return true
-		if _label == "gold":
+		elif _label == "gold":
 			_amount = 10
+			print("gold coin found! +10 coins.")
 			return true
-		if _label == "silver":
+		elif _label == "silver":
 			_amount = 15
+			print("silver coin found! +15 coins.")
 			return true
-
-	
+		else:
+			return false
+			
 	elif _type == "potion":
 		if _label == "green":
 			_amount = 20
+			print("green potion found! +20 health.")
 			return true
-		if _label == "red":
+		elif _label == "red":
 			_amount = 50
+			print("red potion found! +50 health.")
 			return true
+		else: 
+			return false
 	else:
 		return false

@@ -6,11 +6,15 @@ class_name Player
 
 # Movement - Controls how fast the player moves
 @export var move_speed: float = 200.0
+@export var type: String
 
 
 var facing: Vector2 = Vector2.ZERO
 
-# TODO: Add health properties here (Lesson 1)
+@export var MAX_HEALTH : int = 10
+@export var health : int = MAX_HEALTH
+@export var coins : int = 0 
+
 # TODO: Add character identity properties here (Lesson 1)  
 # TODO: Add combat stats here (Lesson 1)
 
@@ -23,7 +27,7 @@ func _ready():
 	print("Player is ready!")
 	# TODO: Add detailed character info display (Lesson 1)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	handle_movement()
 
 func handle_movement():
@@ -59,6 +63,18 @@ func handle_sprite(direction: Vector2) -> void:
 	elif facing.x > 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = false
+		
+func collect_pickup(_amount:int,_type:String) -> bool:
+	if _type == "coin":
+		coins += _amount
+		return true
+			
+	elif _type == "potion":
+		health += _amount
+		return true
+	else:
+		return false
+
 
 # TODO: Add character methods here (Lesson 2)
 # - take_damage()
