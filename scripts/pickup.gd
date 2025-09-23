@@ -13,6 +13,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		body.collect_pickup(amount,type)
+		queue_free()
 		#play sound effect
 		
 func config_Pickup(_amount:int,_label:String,_type:String) -> bool:
