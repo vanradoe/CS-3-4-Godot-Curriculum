@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name npc
+@onready var player: Player = $"../Player"
 
 @export var dialogue: Array[String]
 @export var inventory: Array[String]
@@ -13,12 +14,13 @@ class_name npc
 @export var drop_item = preload("res://scenes/coin.tscn")
 @export var drop_rate: float = 1.0
 @export var state = 0
+@export var current_point = 0
 
 func _ready():
 	pass
 	
-func _process(_delta):
-	pass
+func _physics_process(_delta):
+	movement(_delta)
 	
 func _drop_item():
 	#create a new copy of the prefab object
@@ -31,10 +33,17 @@ func _drop_item():
 	drop.global_position = position
 
 func movement(_delta):
-	if ishostile:
-		position = position.move_toward(Vector2)
-	else:
-		move_points[-8,20]
-
-
-#CONNECT NPC SPRITE TO SCRIPTS. without having it do the same things as the main player.
+	var target
+	if !ishostile:
+		target = move_points[current_point]
+		
+	else: target = player.position
+	
+	var target_direction = position.direction_to(target)
+	velocity = target_direction*speed
+	if position.distance_to(target)<6:
+		current_point+=1
+		if current_point > move_points.size()-1:
+			current_point = 0
+	
+	move_and_slide()
