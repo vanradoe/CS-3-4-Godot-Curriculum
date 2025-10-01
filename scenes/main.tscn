@@ -46,7 +46,7 @@ tile_map_data = PackedByteArray("AADv//3/AAAEAAYAAAAHAAYAAAAEAAYAAAAHAP3/AAAEAAY
 tile_set = ExtResource("3_fpihc")
 
 [node name="Torch3" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
-position = Vector2(-270, 98)
+position = Vector2(-269, 108)
 
 [node name="Spike" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
 position = Vector2(88, 8)
@@ -55,16 +55,17 @@ position = Vector2(88, 8)
 position = Vector2(195, -56.5)
 
 [node name="Torch2" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
-position = Vector2(-204.5, -56.5)
+position = Vector2(-196, -59)
 
 [node name="HealthPotion" parent="Tilemap/StuffOnTop" instance=ExtResource("6_tefeu")]
 position = Vector2(18, 17.5)
+amount = 5
 
 [node name="Coin" parent="Tilemap/StuffOnTop" instance=ExtResource("5_tbgi4")]
 position = Vector2(-9.5, 26)
 
 [node name="Door" parent="Tilemap/StuffOnTop" instance=ExtResource("7_tipki")]
-position = Vector2(24, -24)
+position = Vector2(24, -25)
 
 [node name="Lever" parent="Tilemap/StuffOnTop" instance=ExtResource("8_85g3d")]
 position = Vector2(-183.5, 105)
@@ -74,6 +75,7 @@ position = Vector2(150, 29)
 
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 unique_name_in_owner = true
+position = Vector2(-151, 39)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -87,4 +89,5 @@ grow_vertical = 2
 
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(-496, 36)
+speed = 150
 move_points = Array[Vector2]([Vector2(-469, 124), Vector2(-324, -19)])

@@ -41,7 +41,7 @@ func movement(_delta):
 		target = move_points[move_point]
 	var target_direction = position.direction_to(target)
 	velocity = speed * target_direction
-	if position.distance_to(target)<10:
+	if position.distance_to(target)<50:
 		move_point+=1
 		if move_point > move_points.size()-1:
 			move_point = 0
