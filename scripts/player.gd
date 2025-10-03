@@ -8,7 +8,7 @@ class_name Player
 @export var maxHealth : int = 10
 @export var health : int = maxHealth
 @export var coins : int = 0
-
+@export var can_take_damage: = true
 
 var facing: Vector2 = Vector2.ZERO
 
@@ -75,6 +75,12 @@ func change_health(_amount):
 	elif health < 1:
 		die()
 		
+	print("Health: " + str(health))
+
+func iframes():
+	can_take_damage = false
+	await get_tree().create_timer(1).timeout
+	can_take_damage = true
 	print("Health: " + str(health))
 
 func die():
