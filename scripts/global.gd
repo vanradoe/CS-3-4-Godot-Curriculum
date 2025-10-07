@@ -2,7 +2,8 @@ extends Node
 
 
 var game_world: GameWorld = null
-
+@export var playermaxHealth : int = 5
+@export var playerhealth : int = playermaxHealth
 
 
 func _ready() -> void:

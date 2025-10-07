@@ -5,8 +5,6 @@ class_name Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var move_speed: float = 100.0
-@export var maxHealth : int = 10
-@export var health : int = maxHealth
 @export var coins : int = 0
 
 var knockback: Vector2 = Vector2.ZERO
@@ -84,7 +82,7 @@ func collect_pickup(_type : String, _amount : int):
 # - attack()
 
 func change_health(_amount): 
-	health += _amount
+	playerhealth += _amount
 	if health > maxHealth:
 		health = maxHealth
 		
