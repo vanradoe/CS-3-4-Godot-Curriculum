@@ -92,6 +92,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
-position = Vector2(-528, -71)
+position = Vector2(-509, 168)
 speed = 150
 move_points = Array[Vector2]([Vector2(-469, 124), Vector2(-324, -19)])
