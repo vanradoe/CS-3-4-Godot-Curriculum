@@ -1,14 +1,11 @@
 extends CharacterBody2D
 class_name Player
-
+@onready var attack_box: Area2D = $attack_box
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var move_speed: float = 100.0
+@export var move_speed: float = 200
 @export var coins : int = 0
-
-var knockback: Vector2 = Vector2.ZERO
-var knockback_timer: float = 0.0
 
 var facing: Vector2 = Vector2.ZERO
 
@@ -17,18 +14,9 @@ func _ready():
 	print("Player is ready!")
 	# TODO: Add detailed character info display (Lesson 1)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	handle_movement()
-	if knockback_timer > 0.0:
-		velocity = knockback
-		knockback_timer -= delta
-		if knockback_timer <= 0.0:
-			knockback = Vector2.ZERO
-		
-	else:
-		handle_movement()
-	move_and_slide()
-
+	
 func handle_movement():
 	# Get input direction from arrow keys
 	var direction = Vector2.ZERO
@@ -44,9 +32,6 @@ func handle_movement():
 	velocity = direction * move_speed
 	move_and_slide()
 	
-func apply_knockback(direction: Vector2, force: float, knockback_duration: float) -> void:
-	knockback = direction * force
-	knockback_timer = knockback_duration
 
 
 # BAD QUICK CODE MAYBE CHANGE
@@ -59,37 +44,31 @@ func handle_sprite(direction: Vector2) -> void:
 	
 	if facing.y > 0:
 		animated_sprite.play(prefix + "_forward")
+		attack_box.position = Vector2(0,35)
 	elif facing.y < 0:
 		animated_sprite.play(prefix + "_backward")
+		attack_box.position = Vector2(0,-35)
 	elif facing.x < 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = true
+		attack_box.position = Vector2(-25,0)
 	elif facing.x > 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = false
+		attack_box.position = Vector2(25,0)
 
 func collect_pickup(_type : String, _amount : int):
 	if _type == "coin":
 		coins += _amount
 		print("Coins: " + str(coins))
 	elif _type == "health_potion":
-		change_health(_amount)
+		pass
 		
 
 # TODO: Add character methods here (Lesson 2)
 
 # - level_up()
 # - attack()
-
-func change_health(_amount): 
-	playerhealth += _amount
-	if health > maxHealth:
-		health = maxHealth
-		
-	elif health < 1:
-		die()
-		
-	print("Health: " + str(health))
 
 func die():
 	print("You died!")
