@@ -25,11 +25,11 @@ func _physics_process(delta: float) -> void:
 	pass
 	
 
-func _on_detection_radius_body_entered(body: Node2D) -> void:
+func _on_detection_radius_body_entered(_body: Node2D) -> void:
 	pass # Replace with function body.
 
 
-func _on_detection_radius_body_exited(body: Node2D) -> void:
+func _on_detection_radius_body_exited(_body: Node2D) -> void:
 	pass # Replace with function body.
 
 
@@ -38,7 +38,9 @@ func movement(_delta):
 	if is_hostile:
 		target = player.position
 	else:
-		target = move_points[move_point]
+		if move_points != []:
+			target = move_points[move_point]
+		else: target = position
 	var target_direction = position.direction_to(target)
 	velocity = speed * target_direction
 	if position.distance_to(target)<50:
