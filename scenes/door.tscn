@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8mf4562xlcu8"]
+[gd_scene load_steps=17 format=3 uid="uid://c8mf4562xlcu8"]
 
 [ext_resource type="Script" uid="uid://bvenu0ll76s8p" path="res://scripts/door.gd" id="1_hpvv5"]
 [ext_resource type="Texture2D" uid="uid://kj17m5wnf01g" path="res://assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_uvdjg"]
+[ext_resource type="PackedScene" uid="uid://dsiv33xrorm80" path="res://scenes/enemies/detection_radius_door.tscn" id="3_83dcw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
 atlas = ExtResource("2_uvdjg")
@@ -98,3 +99,8 @@ shape = SubResource("RectangleShape2D_uvdjg")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_uvdjg")
+
+[node name="Detection Radius2" parent="." instance=ExtResource("3_83dcw")]
+
+[connection signal="body_entered" from="Detection Radius2" to="." method="_on_detection_radius_2_body_entered"]
+[connection signal="body_exited" from="Detection Radius2" to="." method="_on_detection_radius_2_body_exited"]

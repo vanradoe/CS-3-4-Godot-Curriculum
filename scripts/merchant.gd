@@ -30,7 +30,6 @@ func show_wares():
 	#for item in inventory:
 		#print(item)
 	print(inventory[0])
-
 	
 func _on_detection_radius_body_entered(_body: Node2D) -> void:
 	super._on_detection_radius_body_entered(_body)
