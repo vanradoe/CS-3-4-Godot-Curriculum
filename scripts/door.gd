@@ -26,4 +26,4 @@ func set_is_open(is_open: bool) -> void:
 	if is_open:
 		$AnimatedSprite2D.frame = 1
 		collision_layer = 0
-		$LightOccluder2D.visible = true
+		$LightOccluder2D.visible = true 

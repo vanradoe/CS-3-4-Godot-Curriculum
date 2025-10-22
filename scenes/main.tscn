@@ -53,7 +53,13 @@ position = Vector2(-269, 108)
 position = Vector2(88, 8)
 
 [node name="Torch" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
-position = Vector2(195, -56.5)
+position = Vector2(241, -41)
+
+[node name="Torch4" parent="Tilemap/StuffOnTop/Torch" instance=ExtResource("7_o6xl0")]
+position = Vector2(-120, -1)
+
+[node name="Torch" parent="Tilemap/StuffOnTop/Torch" instance=ExtResource("7_o6xl0")]
+position = Vector2(231, -37.5)
 
 [node name="Torch2" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
 position = Vector2(-196, -59)
@@ -98,5 +104,41 @@ speed = 150
 move_points = Array[Vector2]([Vector2(-469, 124), Vector2(-324, -19)])
 
 [node name="Merchant" parent="." instance=ExtResource("12_eb6dy")]
-position = Vector2(368, 179)
+position = Vector2(356, 159)
 inventory = Array[String](["potion", "shield", "food"])
+
+[node name="Coin" parent="." instance=ExtResource("5_tbgi4")]
+position = Vector2(-26, -325)
+
+[node name="Coin12" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(144, 20)
+
+[node name="Coin11" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(142, 0)
+
+[node name="Coin10" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(109, 21)
+
+[node name="Coin9" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(109, 2)
+
+[node name="Coin8" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(78, 19)
+
+[node name="Coin7" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(77, 1)
+
+[node name="Coin3" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(22, 1)
+
+[node name="Coin2" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(-1, 19)
+
+[node name="Coin4" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(22, 21)
+
+[node name="Coin5" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(48, 1)
+
+[node name="Coin6" parent="Coin" instance=ExtResource("5_tbgi4")]
+position = Vector2(48, 20)
