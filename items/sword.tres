@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=2 format=3 uid="uid://bqf7fag7dvhjt"]
+
+[ext_resource type="Script" uid="uid://c3ekmk6otg3cy" path="res://scripts/inventory_items.gd" id="1_es5ut"]
+
+[resource]
+script = ExtResource("1_es5ut")
+type = "sword"
+cost = 20
+metadata/_custom_type_script = "uid://c3ekmk6otg3cy"

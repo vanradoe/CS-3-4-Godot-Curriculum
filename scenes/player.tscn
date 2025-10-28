@@ -1,9 +1,15 @@
-[gd_scene load_steps=41 format=3 uid="uid://cqvpxnx2pwqhk"]
+[gd_scene load_steps=47 format=3 uid="uid://cqvpxnx2pwqhk"]
 
 [ext_resource type="Script" uid="uid://dbc6krbwjvop0" path="res://scripts/player.gd" id="1_4x8vn"]
 [ext_resource type="Texture2D" uid="uid://c1j65egvfiye4" path="res://assets/lpc_male_animations_2025-09-04T20-28-14/standard/idle.png" id="2_wn8rh"]
 [ext_resource type="Texture2D" uid="uid://bxia0b8oxxlb8" path="res://assets/lpc_male_animations_2025-09-04T20-28-14/standard/walk.png" id="3_vbpto"]
 [ext_resource type="Texture2D" uid="uid://bwd62n2s4k1j5" path="res://assets/point_light.webp" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dx7bbwkoj1r5d" path="res://scripts/inventory.gd" id="5_fjrip"]
+[ext_resource type="PackedScene" uid="uid://dqecoii7k86ku" path="res://scenes/inventory_items.tscn" id="5_smehm"]
+[ext_resource type="Script" uid="uid://c3ekmk6otg3cy" path="res://scripts/inventory_items.gd" id="6_smehm"]
+[ext_resource type="Resource" uid="uid://clakhid5t3ert" path="res://items/potion.tres" id="7_ur7pv"]
+[ext_resource type="Resource" uid="uid://cn4lvj262id0a" path="res://items/shield.tres" id="9_y4r1p"]
+[ext_resource type="Resource" uid="uid://bqf7fag7dvhjt" path="res://items/sword.tres" id="10_d2wvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a2b3"]
 size = Vector2(17, 45)
@@ -298,3 +304,9 @@ texture = ExtResource("4_dqkch")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_box"]
 shape = SubResource("RectangleShape2D_dqkch")
 debug_color = Color(0.99607843, 0, 0, 0.41960785)
+
+[node name="InventoryItems" parent="." instance=ExtResource("5_smehm")]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("5_fjrip")
+my_inventory = Array[ExtResource("6_smehm")]([ExtResource("7_ur7pv"), ExtResource("9_y4r1p"), ExtResource("10_d2wvv")])

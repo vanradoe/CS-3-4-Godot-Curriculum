@@ -6,6 +6,7 @@ class_name Player
 
 @export var move_speed: float = 200
 @export var coins : int = 0
+@export var potions : int = 0
 
 var facing: Vector2 = Vector2.ZERO
 
@@ -62,7 +63,8 @@ func collect_pickup(_type : String, _amount : int):
 		coins += _amount
 		print("Coins: " + str(coins))
 	elif _type == "health_potion":
-		pass
+		potions += _amount
+		print("Potion Amount: " + str(potions))
 		
 
 # TODO: Add character methods here (Lesson 2)
