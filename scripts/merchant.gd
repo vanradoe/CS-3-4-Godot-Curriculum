@@ -17,3 +17,6 @@ func _on_detection_radius_body_entered(_body: Node2D) -> void:
 	super._on_detection_radius_body_entered(_body)
 	show_wares()
 	
+func show_wares():
+	print("Hello. I have these items: ")
+	

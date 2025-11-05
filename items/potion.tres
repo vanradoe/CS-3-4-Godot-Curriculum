@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=2 format=3 uid="uid://clakhid5t3ert"]
+
+[ext_resource type="Script" uid="uid://c3ekmk6otg3cy" path="res://scripts/inventory_items.gd" id="1_70df6"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "small potion"
+script = ExtResource("1_70df6")
+type = "small potion"
+cost = 5
+metadata/_custom_type_script = "uid://c3ekmk6otg3cy"
