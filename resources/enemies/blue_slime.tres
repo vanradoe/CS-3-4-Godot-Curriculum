@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://dd7xl0ka85khc"]
+
+[ext_resource type="SpriteFrames" uid="uid://doqat4n0qsu7i" path="res://resources/animations/blue_slime_frames.tres" id="1_01p7b"]
+[ext_resource type="Script" uid="uid://bxtjti5hlu2op" path="res://scripts/resources/enemy_resource.gd" id="2_5qur1"]
+
+[resource]
+script = ExtResource("2_5qur1")
+enemy_id = "blue_slime"
+enemy_name = "Blue Slime"
+animated_frames = ExtResource("1_01p7b")
+sprite_scale = 2.0
+max_health = 60.0
+move_speed = 80.0
+detection_range = 800.0
+xp_value = 15
+spawn_weight = 15
+credit_cost = 15

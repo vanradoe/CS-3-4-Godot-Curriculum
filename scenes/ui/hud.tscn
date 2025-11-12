@@ -1,6 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8wk4n6mqpr3m"]
+[gd_scene load_steps=14 format=3 uid="uid://c8wk4n6mqpr3m"]
 
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://spj03ofeblpa" path="res://scripts/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="FontVariation" id="FontVariation_0mwgc"]
+
+[sub_resource type="Theme" id="Theme_hqnrr"]
+default_font = SubResource("FontVariation_0mwgc")
+default_font_size = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mwgc"]
+
+[sub_resource type="Theme" id="Theme_bo48s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qguk"]
+bg_color = Color(0.24562326, 2.3493824e-06, 1.311563e-06, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mwgc"]
+bg_color = Color(0.10451762, 0.16594353, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0mwgc"]
+outline_size = 2
+outline_color = Color(0, 0.11122029, 0.19472799, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqnrr"]
+bg_color = Color(0.003921569, 0, 0.09411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bo48s"]
+bg_color = Color(0.12990013, 0, 0.7599001, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqnrr"]
+outline_size = 2
+outline_color = Color(0, 0.11122029, 0.19472799, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bo48s"]
+outline_size = 2
+outline_color = Color(0, 0.11122029, 0.19472799, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8qguk"]
+outline_size = 2
+outline_color = Color(0, 0.11122029, 0.19472799, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
@@ -9,6 +47,9 @@ script = ExtResource("1_hud")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
@@ -17,14 +58,19 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+modulate = Color(0.6390393, 0.809355, 0.99999994, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = SubResource("Theme_hqnrr")
 
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_0mwgc")
 custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
-max_value = 100.0
+theme = SubResource("Theme_bo48s")
+theme_override_styles/background = SubResource("StyleBoxFlat_8qguk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0mwgc")
 value = 100.0
 show_percentage = false
 
@@ -42,11 +88,13 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Health: 100/100"
+label_settings = SubResource("LabelSettings_0mwgc")
 
 [node name="XPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 25)
 layout_mode = 2
-max_value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hqnrr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bo48s")
 show_percentage = false
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/XPBar"]
@@ -63,6 +111,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "XP: 0/100"
+label_settings = SubResource("LabelSettings_hqnrr")
 
 [node name="StatsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,6 +119,7 @@ layout_mode = 2
 [node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsContainer"]
 layout_mode = 2
 text = "Level: 1"
+label_settings = SubResource("LabelSettings_bo48s")
 
 [node name="StatsLabel" type="Label" parent="MarginContainer/VBoxContainer/StatsContainer"]
 layout_mode = 2
@@ -77,3 +127,4 @@ text = "Speed: 200
 Accuracy: 1.0x
 Carry: 1
 Crafting: 1.0x"
+label_settings = SubResource("LabelSettings_8qguk")
