@@ -77,7 +77,7 @@ class_name StatUpgradeResource
 ## Enum defining available upgrade types
 enum UpgradeType {
 	HEALTH,    ## Increases max health
-		
+	SPEED,
 }
 
 @export_group("Upgrade Identity")
@@ -110,6 +110,8 @@ func apply_to_player(player: Player) -> bool:
 	match stat_type:
 		UpgradeType.HEALTH:
 			return player.upgrade_health(amount)
+		UpgradeType.SPEED:
+			return player.upgrade_speed(amount)
 		
 		_:
 			push_error("Unknown stat_type: " + str(stat_type))

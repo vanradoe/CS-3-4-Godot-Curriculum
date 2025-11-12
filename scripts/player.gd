@@ -64,6 +64,7 @@ var xp_to_next_level: float = 100.0
 
 # Signals for UI updates
 signal health_changed(new_health: float, max_health: float)
+signal speed_changed(new_speed: float, max_speed: float)
 signal xp_changed(current_xp: float, xp_needed: float)
 signal level_up(new_level: int)
 signal player_died
@@ -173,6 +174,7 @@ func level_up_character() -> bool:
 	current_health = max_health
 	health_changed.emit(current_health, max_health)
 
+
 	# Update XP bar to show reset
 	xp_changed.emit(current_xp, xp_to_next_level)
 
@@ -202,7 +204,6 @@ func die() -> bool:
 
 	return true
 
-
 # ========== STAT UPGRADE METHODS (Called from UI) ==========
 
 
@@ -219,4 +220,5 @@ func upgrade_health(amount: float) -> bool:
 ## Returns true on successful upgrade
 func upgrade_speed(amount: float) -> bool:
 	move_speed += amount
+	print(move_speed)
 	return true

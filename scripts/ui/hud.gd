@@ -46,6 +46,7 @@ class_name HUD
 @onready var level_label: Label = $MarginContainer/VBoxContainer/StatsContainer/LevelLabel
 @onready var stats_label: Label = $MarginContainer/VBoxContainer/StatsContainer/StatsLabel
 
+
 @onready var player: Player = %Player
 
 
@@ -65,6 +66,7 @@ func connect_player_signals() -> void:
 	player.health_changed.connect(_on_player_health_changed)
 	player.xp_changed.connect(_on_player_xp_changed)
 	player.level_up.connect(_on_player_level_up)
+	
 
 
 ## Update all HUD displays
@@ -74,6 +76,7 @@ func update_all_displays() -> void:
 
 	_on_player_health_changed(player.current_health, player.max_health)
 	_on_player_xp_changed(player.current_xp, player.xp_to_next_level)
+	#_on_player_speed_changed(player.current_speed, player.max_speed)
 	_update_level_display()
 	_update_stats_display()
 
