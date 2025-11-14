@@ -7,4 +7,4 @@
 script = ExtResource("1_projectile")
 texture = ExtResource("2_qyqwf")
 lifetime = 2.0
-damage = 20.0
+damage = 25.0

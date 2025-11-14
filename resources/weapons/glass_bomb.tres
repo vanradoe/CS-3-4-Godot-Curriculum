@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=4 format=3 uid="uid://bp650ybkdilyk"]
+
+[ext_resource type="Texture2D" uid="uid://b3l1sq0mb0js2" path="res://assets/2D Pixel Dungeon Asset Pack/interface/arrow_1.png" id="1_o40ko"]
+[ext_resource type="Resource" uid="uid://b2uwhmdi8c2qi" path="res://resources/projectiles/glass_projectile.tres" id="2_o40ko"]
+[ext_resource type="Script" uid="uid://c6yex7bm6vt2g" path="res://scripts/resources/projectile_weapon_resource.gd" id="3_8qhle"]
+
+[resource]
+script = ExtResource("3_8qhle")
+projectile_config = ExtResource("2_o40ko")
+projectile_count = 15
+spread_angle = 360.0
+item_id = "glass bomb"
+item_name = "Glass Bomb"
+description = "A bottle thrown on the ground that sprays out in a 360 radius"
+icon = ExtResource("1_o40ko")
+value = 50
+base_damage = 25.0
+fire_rate = 0.95
+accuracy_spread = 5.0
+weapon_sprite = ExtResource("1_o40ko")

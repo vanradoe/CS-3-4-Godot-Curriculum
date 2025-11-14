@@ -42,7 +42,9 @@ class_name Player
 ## ============================================================================
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var weapon_system: WeaponSystem = %WeaponSystem
+var basic_pistol = preload("res://resources/weapons/basic_pistol.tres")
+var glass_bomb = preload("res://resources/weapons/glass_bomb.tres")
 # Movement - Controls how fast the player moves
 @export var move_speed: float = 200.0
 
@@ -75,6 +77,13 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready():
+	weapon_system.equip_weapon(glass_bomb)
+	print(weapon_system.equipped_weapon.item_name)
+	
+	if Input.is_action_just_pressed("E"):
+		print("e key pressed")
+		#weapon_system.equip(basic_pistol)
+		
 	current_health = max_health
 
 	# Set collision layers (Layer 1 = player)
@@ -120,6 +129,10 @@ func handle_sprite(direction: Vector2) -> void:
 		animated_sprite.flip_h = false
 
 # ========== CHARACTER METHODS ==========
+
+##changing weapons
+#func change_weapon():
+
 
 ## Take damage from enemies or hazards
 ## Returns true if this damage killed the player
