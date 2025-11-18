@@ -79,10 +79,7 @@ func _input(event: InputEvent) -> void:
 func _ready():
 	weapon_system.equip_weapon(glass_bomb)
 	print(weapon_system.equipped_weapon.item_name)
-	
-	if Input.is_action_just_pressed("E"):
-		print("e key pressed")
-		#weapon_system.equip(basic_pistol)
+
 		
 	current_health = max_health
 
@@ -92,6 +89,12 @@ func _ready():
 
 func _physics_process(_delta):
 	handle_movement()
+	
+	if Input.is_action_just_pressed("change weapon"):
+		if weapon_system.equipped_weapon.item_name == "Basic Pistol":
+			weapon_system.equip_weapon(glass_bomb)
+		else:
+			weapon_system.equip_weapon(basic_pistol)
 
 func handle_movement():
 	# Get input direction from arrow keys
