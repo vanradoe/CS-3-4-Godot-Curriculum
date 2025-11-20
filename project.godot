@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="cs_3-4_starter_project"
+config/name="vampire survivors game"
 run/main_scene="res://scenes/arena.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
